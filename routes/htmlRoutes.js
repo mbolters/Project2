@@ -29,13 +29,6 @@ module.exports = function(app) {
   app.get('/results/:id', function(req, res) {
     db.meteorshowers.findOne({ where: { id: req.params.id } }).then(function(meteorResult) {
 
-
-      // spaceImages.findOne({where: {imageUrls: [1]}}).then(function(imgResult) {
-      //   console.log(imgResult);
-      //   meteorResult.imageUrls = imgResult;
-      // });
-
-
       res.render("results", {
         resultMeteor: meteorResult
       });
