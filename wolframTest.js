@@ -8,53 +8,97 @@
 
 // //
 // // 3
-// waApi.getFull({
-//     input: 'eclipse',
-//     output: 'json',
-//   }).then(console.log).catch(console.error)
+// waApi.getFull({....
+
 
 
   
 
-// waApi.getSpoken("when is labor day in 2020")
-//   .then(console.log).catch(console.error);
+/**
+                 * Build a URL call from a baseUrl and query; 
+                 * 
+                 * Supports four 'output' formats:
+                 * 'string' and 'xml' are both strings,
+                 * 'json' is an Object (a result of JSON.parse), and
+                 * 'image' is a string of a "Data URI"
+                 * !typedef OutputFormat
+                 * !property {'string'|'json'|'image'|'xml'} output
+              
+**/
 
 const WolframAlphaAPI = require('@dguttman/wolfram-alpha-api');
 const waApi = WolframAlphaAPI('G28HUV-QJ487E38KH');
-
-
-
-
-
 var axios = require("axios");
-var query= encodeURIComponent("is there an eclipse today");
+const query = "is there an eclipse today";
 var queryURL = "http://api.wolframalpha.com/v2/query?appid=DEMO&i=" + query+ "&output=json";
-console.log("query url: "+queryURL);
+
+//console.log("query url: "+queryURL);
 axios.get(queryURL)
-.then(function(res){
-    console.log("JSON: ",res);
-    console.log("data: ",res.data.queryresult);
-    console.log(" status :" + res.status, " statusText: " + res.status.statusText);
+    .then(function(res){
+// console.log("JSON: ",res);
+// console.log("data: ",res.data.queryresult);
+// console.log(" status :" + res.status, " statusText: " + res.status.statusText);
     
-})
-.catch(function(err){
-    console.log(err)
-})
+    })
+        .catch(function(err){
+        // console.log(err)
+        })
 
 
+               
+
+// The following methods (Spoken, Simple, Short, Full) take 'input' (which is either a string, or an object of parameters)
 
 
-console.log('about to call wolframAPI');
+// Example: waApi.getSpoken('2+2').then(console.log, console.error); 
+// answer:  "The answer is 4"
 waApi.getSpoken('is there an eclipse today')
     .then(function(result){
+        console.log('----------------------------------spoken--------------------');
         console.log(result)})
-
         .catch(function(err){
             console.log(err);
-                             });
-                           
-    
+                             });                                                         
+                              
+
+// Example:  waApi.getSimple({i: 'nyc to la', units: 'metric'}).then(console.log, console.error);
+// answer: "data:image/gif;base64,R0lGODlhHAJNBfcAAAAAAAAEAAgICAgMCBAQEBAUEBgYGBgcGCAgICAkICksKSkoK...
+// waApi.getSimple('is there an eclipse today')
+// .then(function(result){
+//     console.log('----------------------------------simple--------------------');
+//     console.log(result)})
+//     .catch(function(err){
+//         console.log(err);
+//                          });    
+// add code for .then and .catch                                 
+ 
+Example: waApi.getShort('2+2').then(console.log, console.error);
+answer: "4"
+waApi.getShort('eclipse')
+.then(function(result){
+    console.log('----------------------------------short--------------------');
+    console.log(result)})
+    .catch(function(err){
+        console.log(err);
+                         });    
 
 
+
+
+//Example waApi.getFull('2+2').then(console.log, console.error);
+// answer: {success: true, error: false, numpods: 6, datatypes: 'Math', timedout: '', timing: 1.08 ...
+
+waApi.getFull('is there an eclipse today')
+.then(function(result){
+    console.log('----------------------------------full--------------------');
+    console.log(result);
+    console.log(result.pods[1]);
+
+})
+    .catch(function(err){
+        console.log('ooops FULL error');
+        console.log(err);
+                         });    
+// add code for .then and .catch
 
 
