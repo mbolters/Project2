@@ -23,3 +23,6 @@ Optional:
 - use existing public dataset to populate database
 - seed/schema.sql files
 
+
+
+The WolframAlpha APIs provide informational text to the carousel. When a user clicks on an image in the carousel, the rotation of images pauses. WolframAlpha is queried with the topic from the carousel image. Results are displayed over the paused image. A subsequent click resumes the roatation of images.
