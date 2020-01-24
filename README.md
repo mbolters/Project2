@@ -5,7 +5,7 @@
 - Sequelize ORM
 - GET/POST Routes
 - Heroku Deployment
-- One new library, package, or tech (Materialize can count?)
+- One new library, package, or tech 
 - MVC Paradigm
         MVC stands for Model — View — Controller. It allows a coder to factor out the various components of an application and more easily update them. The MVC allows the programmer to create barriers to organize the code allowing a programmer to compartmentalize functionality.
 
